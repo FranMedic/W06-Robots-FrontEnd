@@ -5,14 +5,14 @@ import RobotList from "./components/RobotList/RobotList";
 function App() {
   return (
     <>
-      <main className="container ">
+      <div className="container ">
         <section className="row justify-content-center">
           <h1>My Robotos</h1>
           <RobotList />
 
           <RobotForm />
         </section>
-      </main>
+      </div>
     </>
   );
 }

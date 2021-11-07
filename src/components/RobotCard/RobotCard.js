@@ -1,14 +1,21 @@
-const RobotCard = () => {
+const RobotCard = ({
+  robot: {
+    name,
+    image,
+    features: { velocity, resistance, creationData },
+  },
+}) => {
   return (
     <>
       <div className="card w-300">
-        <img className="card-img-top" src="..." alt="Card cap" />
+        <img className="card-img-top" src={image} alt="{name}" />
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+          <h5 className="card-title">{name}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Velocity: {velocity}</li>
+            <li class="list-group-item">Resistance:{resistance}</li>
+            <li class="list-group-item">CreationDate:{creationData}</li>
+          </ul>
         </div>
       </div>
     </>
