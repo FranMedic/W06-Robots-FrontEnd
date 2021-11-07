@@ -11,6 +11,13 @@ const useRobots = () => {
     dispatch(loadRobotsThunk());
   }, [dispatch]);
 
+  const createTask = useCallback(
+    (robot) => {
+      dispatch(createTask());
+    },
+    [dispatch]
+  );
+
   return {
     robots,
     loadRobots,

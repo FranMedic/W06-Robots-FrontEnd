@@ -1,4 +1,18 @@
+import useRobots from "../../hooks/useRobots";
+
 const RobotForm = () => {
+  const { createTask } = useRobots();
+
+  const initialData = {
+    name: "",
+    image: "",
+    features: {
+      velocity: "",
+      resistance: "",
+      creationData: "",
+    },
+  };
+
   return (
     <>
       <div className=" col-4 form-container">
