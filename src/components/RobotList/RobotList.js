@@ -13,9 +13,9 @@ const RobotList = () => {
     <>
       <div className="col-8 list-container">
         <ul>
-          {robots.map((robot) => (
-            <li className="row" key={robot.id}>
-              <RobotCard robot={robot} />
+          {robots.map((robot, index) => (
+            <li className="row" key={index}>
+              <RobotCard robot={robot} key={robot.id} />
             </li>
           ))}
         </ul>

@@ -2,7 +2,7 @@ const RobotForm = () => {
   return (
     <>
       <div className=" col-4 form-container">
-        <form autocomplete="off" onSubmit="" noValidate>
+        <form autoComplete="off" onSubmit={() => {}} noValidate>
           <label htmlFor="robotName" className="form-label">
             Robot Name
           </label>
@@ -58,8 +58,7 @@ const RobotForm = () => {
           />
 
           <button
-            disabled=""
-            onClick=""
+            onClick={() => {}}
             className="btn btn-primary mt-5"
             type="submit"
           >
