@@ -1,83 +1,110 @@
-//import useRobots from "../../hooks/useRobots";
+import { useState } from "react";
+
+import useRobots from "../../hooks/useRobots";
 
 const RobotForm = () => {
-  /*const { createTask } = useRobots();
+  const { createRobot } = useRobots();
 
   const initialData = {
     name: "",
     image: "",
-    features: {
-      velocity: "",
-      resistance: "",
-      creationData: "",
-    },
+    velocity: "",
+    resistance: "",
+    creationData: "",
   };
 
-  //const [robotData, setRobotData]*/
+  const [robotData, setRobotData] = useState(initialData);
+
+  const onChangeData = (event) => {
+    setRobotData({
+      ...robotData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const robotDataFinal = {
+      name: robotData.name,
+      image: robotData.image,
+      features: {
+        velocity: robotData.velocity,
+        resistance: robotData.resistance,
+        creationData: robotData.creationData,
+      },
+    };
+    createRobot(robotDataFinal);
+  };
 
   return (
     <>
       <div className=" col-4 form-container">
-        <form autoComplete="off" onSubmit={() => {}} noValidate>
-          <label htmlFor="robotName" className="form-label">
+        <form autoComplete="off" onSubmit={onSubmit} noValidate>
+          <label htmlFor="name" className="form-label">
             Robot Name
           </label>
           <input
             type="text"
-            id="robotName"
+            id="name"
             placeholder="Name"
+            value={robotData.name}
+            onChange={onChangeData}
             required
             className="mb-2 form-control"
           />
 
-          <label htmlFor="robotImage" className="form-label">
+          <label htmlFor="image" className="form-label">
             Robot Image
           </label>
           <input
             type="url"
-            id="robotImage"
+            id="image"
             placeholder="Image"
+            value={robotData.image}
+            onChange={onChangeData}
             required
             className="mb-2 form-control"
           />
 
-          <label htmlFor="robotVelocity" className="form-label">
+          <label htmlFor="velocity" className="form-label">
             Velocity
           </label>
           <input
             type="number"
-            id="robotVelocity"
+            id="velocity"
             placeholder="Velocity"
+            value={robotData.velocity}
+            onChange={onChangeData}
             required
             className="mb-2 form-control"
           />
 
-          <label htmlFor="robotResitance" className="form-label">
+          <label htmlFor="resistance" className="form-label">
             Resistance
           </label>
           <input
             type="number"
-            id="robotResitance"
+            id="resistance"
             placeholder="Resistance"
             required
+            value={robotData.resistance}
+            onChange={onChangeData}
             className="mb-2 form-control"
           />
-          <label htmlFor="robotDate" className="form-label">
+          <label htmlFor="creationData" className="form-label">
             Creation date
           </label>
           <input
             type="date"
-            id="robotDate"
+            id="creationData"
             placeholder="dd/mm/yyyy"
+            value={robotData.creationData}
+            onChange={onChangeData}
             required
             className="mb-2 form-control"
           />
 
-          <button
-            onClick={() => {}}
-            className="btn btn-primary mt-5"
-            type="submit"
-          >
+          <button value="Submit" className="btn btn-primary mt-5" type="submit">
             Add Robot
           </button>
         </form>

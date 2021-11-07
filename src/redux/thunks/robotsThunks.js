@@ -10,6 +10,23 @@ export const loadRobotsThunk = () => async (dispatch) => {
 };
 
 export const createRobotThunk = (robot) => async (dispatch) => {
-  const newRobot = await axios.post(urlApi);
+  const response = await fetch(
+    `https://robotos-franny-medic.herokuapp.com/robots/create?token=CATTOKEN`,
+    {
+      method: "POST",
+      body: JSON.stringify(robot),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const newRobot = await response.json();
+
   dispatch(createRobotAction(newRobot));
 };
+
+/*const newRobot = await axios.post(
+    `https://robotos-franny-medic.herokuapp.com/robots/create?token=CATTOKEN`,
+    robot
+  );
+  dispatch(createRobotAction(newRobot));*/
