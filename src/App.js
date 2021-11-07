@@ -9,7 +9,6 @@ function App() {
         <section className="row justify-content-center">
           <h1>My Robotos</h1>
           <RobotList />
-
           <RobotForm />
         </section>
       </div>
