@@ -3,13 +3,13 @@ import { useState } from "react";
 import useUser from "../../hooks/useUser";
 
 const LoginForm = () => {
-  const { user } = useUser();
-  const intialData = {
+  const { user, login } = useUser();
+  const initialData = {
     username: "",
     password: "",
   };
 
-  const [userData, setUserData] = useState(intialData);
+  const [userData, setUserData] = useState(initialData);
 
   const onChangeData = (event) => {
     setUserData({
@@ -19,6 +19,8 @@ const LoginForm = () => {
   };
   const onSubmit = (event) => {
     event.preventDefault();
+    login({ username: userData.username, password: userData.password });
+    console.log({ username: userData.username, password: userData.password });
   };
   return (
     <>
