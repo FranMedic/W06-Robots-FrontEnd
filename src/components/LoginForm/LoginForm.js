@@ -24,31 +24,32 @@ const LoginForm = () => {
     <>
       <div className=" col-4 form-container">
         <form autoComplete="off" onSubmit={onSubmit} noValidate>
-          <div class="mb-3 row">
-            <label htmlFor="name" className="form-label">
+          <div className="mb-3 row">
+            <label htmlFor="username" className="form-label">
               Username
             </label>
             <input
               type="text"
-              id="name"
-              placeholder="Name"
+              id="username"
+              placeholder="UserName"
               value={userData.username}
               onChange={onChangeData}
               required
               className="mb-2 form-control"
             />
           </div>
-          <div class="mb-3 row">
-            <label htmlFor="password" class="form-label">
+          <div className="mb-3 row">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
 
             <input
               type="password"
-              value={userData.username}
+              value={userData.password}
+              placeholder="Password"
               onChange={onChangeData}
               required
-              class="form-control"
+              className="form-control"
               id="password"
             />
           </div>
