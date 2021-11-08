@@ -7,8 +7,8 @@ const useUser = () => {
 
   const dispatch = useDispatch();
 
-  const login = () => {
-    dispatch(userLoginThunk());
+  const login = (user) => {
+    dispatch(userLoginThunk(user));
   };
   const logout = () => {
     dispatch(userLogoutAction());

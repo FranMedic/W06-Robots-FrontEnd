@@ -7,7 +7,7 @@ const urlApi = "https://robotos-franny-medic.herokuapp.com/";
 const userLocal = process.env.REACT_APP_LOCAL_STORAGE;
 
 export const userLoginThunk = (user) => async (dispatch) => {
-  const response = await axios.post(urlApi + "user/login", user);
+  const response = await axios.post(urlApi + "users/login", user);
 
   if (response.status === 200) {
     const token = response.data.token;
