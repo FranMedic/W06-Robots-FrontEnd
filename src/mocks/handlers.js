@@ -1,5 +1,4 @@
 import { rest } from "msw";
-import { getFakeRobots } from "../factories/robotsFactory";
 
 const ulrApi = process.env.REACT_APP_API_URL;
 
@@ -33,11 +32,6 @@ export const handlers = [
         },
       ])
     );
-    return resp;
-  }),
-
-  rest.get(ulrApi + "/1", async (req, res, ctx) => {
-    const resp = res(ctx.json(getFakeRobots()));
     return resp;
   }),
 ];

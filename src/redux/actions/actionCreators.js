@@ -9,3 +9,12 @@ export const createRobotAction = (robot) => ({
   type: actionTypes.createRobot,
   robot,
 });
+
+export const userLoginAction = (user) => ({
+  type: actionTypes.userlogin,
+  user,
+});
+
+export const userLogoutAction = () => ({
+  type: actionTypes.userlogout,
+});
