@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+import useUser from "../../hooks/useUser";
+
 const LoginForm = () => {
+  const { user } = useUser();
   const intialData = {
     username: "",
     password: "",
@@ -44,12 +47,22 @@ const LoginForm = () => {
               type="password"
               value={userData.username}
               onChange={onChangeData}
-              requiredclass="form-control"
+              required
+              class="form-control"
               id="password"
             />
           </div>
+          <button
+            value="Submit"
+            className="btn btn-primary mt-1 mb-5"
+            type="submit"
+          >
+            {user.isAuthenticated ? "Logout" : "Login"}
+          </button>
         </form>
       </div>
     </>
   );
 };
+
+export default LoginForm;
