@@ -34,6 +34,7 @@ const LoginForm = () => {
   const onLogout = (event) => {
     event.preventDefault();
     logout();
+    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
   };
 
   return (
