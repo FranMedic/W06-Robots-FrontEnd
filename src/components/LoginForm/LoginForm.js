@@ -26,14 +26,20 @@ const LoginForm = () => {
       [event.target.id]: event.target.value,
     });
   };
-  const onSubmit = (event) => {
+
+  const onLogin = (event) => {
     event.preventDefault();
     login({ username: userData.username, password: userData.password });
   };
+
   return (
     <>
       <div className=" col-4 form-container">
-        <form autoComplete="off" onSubmit={onSubmit} noValidate>
+        <form
+          autoComplete="off"
+          onSubmit={user.isAuthenticated ? onLogout : onLogin}
+          noValidate
+        >
           <div className="mb-3 row">
             <label htmlFor="username" className="form-label">
               Username
