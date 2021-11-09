@@ -20,7 +20,6 @@ const LoginForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     login({ username: userData.username, password: userData.password });
-    console.log({ username: userData.username, password: userData.password });
   };
   return (
     <>
