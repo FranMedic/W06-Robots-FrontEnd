@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useUser from "../../hooks/useUser";
 
@@ -10,6 +10,15 @@ const LoginForm = () => {
   };
 
   const [userData, setUserData] = useState(initialData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    if (userData.username !== "" && userData.password !== "") {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [userData.password, userData.username]);
 
   const onChangeData = (event) => {
     setUserData({
@@ -58,6 +67,7 @@ const LoginForm = () => {
             value="Submit"
             className="btn btn-primary mt-1 mb-5"
             type="submit"
+            disabled={isDisabled}
           >
             {user.isAuthenticated ? "Logout" : "Login"}
           </button>
