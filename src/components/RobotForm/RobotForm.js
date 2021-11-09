@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useRobots from "../../hooks/useRobots";
 
@@ -14,6 +14,27 @@ const RobotForm = () => {
   };
 
   const [robotData, setRobotData] = useState(initialData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    if (
+      robotData.name !== "" &&
+      robotData.image !== "" &&
+      robotData.creationData !== "" &&
+      robotData.resistance !== "" &&
+      robotData.velocity !== ""
+    ) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [
+    robotData.creationData,
+    robotData.image,
+    robotData.name,
+    robotData.resistance,
+    robotData.velocity,
+  ]);
 
   const onChangeData = (event) => {
     setRobotData({
@@ -104,7 +125,12 @@ const RobotForm = () => {
             className="mb-2 form-control"
           />
 
-          <button value="Submit" className="btn btn-primary mt-5" type="submit">
+          <button
+            value="Submit"
+            disabled={isDisabled}
+            className="btn btn-primary mt-5"
+            type="submit"
+          >
             Add Robot
           </button>
         </form>

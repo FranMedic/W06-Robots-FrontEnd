@@ -32,7 +32,7 @@ export const loadRobotsThunk = () => async (dispatch) => {
   dispatch(createRobotAction(newRobot));
 };*/
 export const createRobotThunk = (robot) => async (dispatch) => {
-  const { token } = JSON.stringify(
+  const { token } = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
   const newRobot = await axios.post(
