@@ -5,7 +5,7 @@ import { createRobotAction, loadRobotsAction } from "../actions/actionCreators";
 const urlApi = process.env.REACT_APP_API_URL;
 
 export const loadRobotsThunk = () => async (dispatch) => {
-  const { token } = JSON.stringify(
+  const { token } = JSON.parse(
     localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
   );
   console.log(token);
