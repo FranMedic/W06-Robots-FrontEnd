@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useUser from "../../hooks/useUser";
 
@@ -10,6 +10,15 @@ const LoginForm = () => {
   };
 
   const [userData, setUserData] = useState(initialData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    if (userData.username !== "" && userData.password !== "") {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [userData.password, userData.username]);
 
   const onChangeData = (event) => {
     setUserData({
@@ -17,14 +26,20 @@ const LoginForm = () => {
       [event.target.id]: event.target.value,
     });
   };
-  const onSubmit = (event) => {
+
+  const onLogin = (event) => {
     event.preventDefault();
     login({ username: userData.username, password: userData.password });
   };
+
   return (
     <>
       <div className=" col-4 form-container">
-        <form autoComplete="off" onSubmit={onSubmit} noValidate>
+        <form
+          autoComplete="off"
+          onSubmit={user.isAuthenticated ? onLogout : onLogin}
+          noValidate
+        >
           <div className="mb-3 row">
             <label htmlFor="username" className="form-label">
               Username
@@ -58,6 +73,7 @@ const LoginForm = () => {
             value="Submit"
             className="btn btn-primary mt-1 mb-5"
             type="submit"
+            disabled={isDisabled}
           >
             {user.isAuthenticated ? "Logout" : "Login"}
           </button>
